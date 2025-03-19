@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Site</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #2c3e50, #4ca1af);
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            flex-direction: column;
+        }
+
+        .content {
+            text-align: center;
+            z-index: 1;
+        }
+
+        .content input {
+            padding: 10px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+        }
+
+        .content button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            background-color: #2980b9;
+            color: #fff;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .topography {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/1231630/interactive-topography.svg');
+            background-size: cover;
+            animation: animateBg 20s linear infinite;
+            z-index: 0;
+            opacity: 0.5;
+        }
+
+        @keyframes animateBg {
+            0% { transform: translate(0, 0); }
+            50% { transform: translate(-50%, 0); }
+            100% { transform: translate(0, 0); }
+        }
+
+        .riddle {
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+
+        .hint {
+            display: none;
+            margin-top: 10px;
+            font-size: 16px;
+            color: #f39c12;
+        }
+    </style>
+</head>
+<body>
+    <div class="topography"></div>
+    <div class="content">
+        <div class="riddle">
+            Devinette :<br>
+            "Je peux être invisible, mais je suis toujours là,<br>
+            Je t’empêche d’avancer, ou bien je te laisse passer sans tracas,<br>
+            Parfois je bloque, parfois je m'efface,<br>
+            Mais quand je n'existe pas, tout devient une trace.<br>
+            Qui suis-je ?"
+        </div>
+        <button onclick="showHint()">Indice</button>
+        <div class="hint" id="hint">
+            Si je n'existe pas, tout devient possible, il n'y a rien qui t'empêche d'avancer.
+        </div>
+        <h1>Enter the Password</h1>
+        <input type="password" id="password" placeholder="Enter password here">
+        <button onclick="checkPassword()">Submit</button>
+        <p id="message"></p>
+    </div>
+
+    <script>
+        function checkPassword() {
+            const password = document.getElementById('password').value;
+            if (password === 'AUCUN OBSTACLE') {
+                window.location.href = 'https://youtu.be/Bx3eXMv38PI';
+            } else {
+                const message = document.getElementById('message');
+                message.textContent = 'Access Denied!';
+                message.style.color = 'red';
+            }
+        }
+
+        function showHint() {
+            const hint = document.getElementById('hint');
+            hint.style.display = 'block';
+        }
+    </script>
+</body>
+</html>
